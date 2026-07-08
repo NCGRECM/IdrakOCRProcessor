@@ -94,4 +94,36 @@ public class Config {
 	public static String getExculdedFetchDocumentStatusForOCR() {
 		return props.getProperty("exculded_fetch_document_status_for_OCR");
 	}
+
+	public static String getIdrakTokenUrl() {
+		return props.getProperty("idrak-token-url");
+	}
+
+	public static String getIdrakClientId() {
+		return props.getProperty("idrak-client-id");
+	}
+
+	public static String getIdrakClientSecret() {
+		return props.getProperty("idrak-client-secret");
+	}
+
+	public static String getIdrakGrantType() {
+		return props.getProperty("idrak-grant-type");
+	}
+
+	public static String getIdrakScope() {
+		return props.getProperty("idrak-scope");
+	}
+
+	public static String getIdrakCookie() {
+		return props.getProperty("idrak-cookie");
+	}
+
+	public static int getIdrakConnectionTimeout() {
+		return Integer.parseInt(props.getProperty("idrak-connection-timeout"));
+	}
+
+	public static int getIdrakReadTimeout() {
+		return Integer.parseInt(props.getProperty("idrak-read-timeout"));
+	}
 }

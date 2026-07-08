@@ -13,6 +13,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import com.dataserve.ocr.bean.DocumentBean;
 import com.dataserve.ocr.database.DatabaseManager;
 import com.dataserve.ocr.exception.DatabaseException;
+import com.dataserve.ocr.idrak.IdrakAuthClient;
+import com.dataserve.ocr.idrak.IdrakTokenResponse;
 import com.dataserve.ocr.util.Config;
 import com.dataserve.ocr.util.Log;
 
@@ -25,6 +27,11 @@ public class StarterTask extends TimerTask {
 		DatabaseManager dm = null;
 		ThreadPoolExecutor executor = null;
 		try {
+			Log.debug("Logging in to Idrak OCR API ...");
+			IdrakTokenResponse tokenResponse = new IdrakAuthClient().login();
+			Log.debug("Idrak OCR API login succeeded. Token expires in " + tokenResponse.getExpiresIn() + " seconds");
+			Log.debug("Idrak OCR API granted scope: " + tokenResponse.getScope());
+
 			dm = new DatabaseManager();
 			
 			Log.debug("Initiating executor ... ");

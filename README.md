@@ -8,6 +8,15 @@ Tesseract must be downloaded and installed on the machine, and JAVA_HOME needs b
 
 Configure the config.properties file in the project
 
+Idrak OCR login is the first step in the processor run. Configure these properties before running:
+
+idrak-token-url
+idrak-client-id
+idrak-client-secret
+idrak-grant-type
+idrak-scope
+idrak-cookie
+
 # VERY IMPORTANT NOTE: Before the first time you run mvn install, run the following commans:
 mvn install:install-file -Dfile=${basedir}/lib/Jace.jar -DgroupId=com.ibm -DartifactId=jace -Dversion=1.0 -Dpackaging=jar
 
