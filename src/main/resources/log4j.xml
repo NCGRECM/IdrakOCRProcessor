@@ -14,7 +14,7 @@
 	    <param name="append" value="true" />
 	    <param name="maxFileSize" value="20MB" />
 	    <param name="maxBackupIndex" value="10" />
-	    <param name="file" value="C:/logs/ECMNCGR/OCRProcessor.log" />
+	    <param name="file" value="C:/logs/ECMNCGR/IdrakOCRProcessor.log" />
 	    <layout class="org.apache.log4j.PatternLayout">
 		<param name="ConversionPattern" 
 			value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
