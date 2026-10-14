@@ -1,30 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 <log4j:configuration debug="true"
-  xmlns:log4j='http://jakarta.apache.org/log4j/'>
+                     xmlns:log4j='http://jakarta.apache.org/log4j/'>
 
-	<appender name="console" class="org.apache.log4j.ConsoleAppender">
-	    <layout class="org.apache.log4j.PatternLayout">
-		<param name="ConversionPattern" 
-			value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
-	    </layout>
-	</appender>
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+        </layout>
+    </appender>
 
-	<appender name="file" class="org.apache.log4j.RollingFileAppender">
-	    <param name="append" value="true" />
-	    <param name="maxFileSize" value="20MB" />
-	    <param name="maxBackupIndex" value="10" />
-	    <param name="file" value="C:/logs/ECMNCGR/IdrakOCRProcessor.log" />
-	    <layout class="org.apache.log4j.PatternLayout">
-		<param name="ConversionPattern" 
-			value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
-	    </layout>
-	</appender>
+    <appender name="file" class="org.apache.log4j.RollingFileAppender">
+        <param name="append" value="true" />
+        <param name="maxFileSize" value="20MB" />
+        <param name="maxBackupIndex" value="10" />
+        <param name="file" value="C:/logs/ECMNCGR/IdrakOCRProcessor.log" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+        </layout>
+    </appender>
 
-	<root>
-		<level value="DEBUG" />
-		<appender-ref ref="console" />
-		<appender-ref ref="file" />
-	</root>
+    <!-- Dedicated file for OCR.FileStatusMahfuthat MQ traffic (Log.mqInfo/mqWarn/mqError, logger
+         category "MQ" below) - so MQ arrivals/processing can be checked on their own the next
+         morning without wading through the full app log. Still also goes to "console"/"file"
+         above via the MQ category's default additivity (true), so nothing is hidden from the
+         main log either. -->
+    <appender name="mqFile" class="org.apache.log4j.RollingFileAppender">
+        <param name="append" value="true" />
+        <param name="maxFileSize" value="20MB" />
+        <param name="maxBackupIndex" value="10" />
+        <param name="file" value="C:/logs/ECMNCGR/IdrakOCR_MQ.log" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+        </layout>
+    </appender>
+
+    <category name="MQ">
+        <level value="DEBUG" />
+        <appender-ref ref="mqFile" />
+    </category>
+
+    <root>
+        <level value="DEBUG" />
+        <appender-ref ref="console" />
+        <appender-ref ref="file" />
+    </root>
 
 </log4j:configuration>

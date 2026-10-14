@@ -31,7 +31,7 @@
 	    <version>2.17.1</version>
 	</dependency>
 
-	
+
     <dependency>
 		    <groupId>net.sourceforge.tess4j</groupId>
 		    <artifactId>tess4j</artifactId>
@@ -39,11 +39,22 @@
 	</dependency>
 
     <dependency>
-         <groupId>com.ibm</groupId>
+         <groupId>com.ibm.filenet</groupId>
          <artifactId>jace</artifactId>
          <version>1.0</version>
     </dependency>
- 
+      <dependency>
+          <groupId>org.json</groupId>
+          <artifactId>json</artifactId>
+          <version>20231013</version>
+      </dependency>
+
+      <!--  IBM MQ classes for Java (base, non-JMS) - used to drain OCR.FileStatusMahfuthat queue  -->
+      <dependency>
+          <groupId>com.ibm.mq</groupId>
+          <artifactId>com.ibm.mq.allclient</artifactId>
+          <version>9.3.4.1</version>
+      </dependency>
 	<!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
 	<dependency>
 	    <groupId>com.microsoft.sqlserver</groupId>
